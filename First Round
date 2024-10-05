@@ -1,0 +1,52 @@
+#include<stdio.h>
+int majority(int arr[],int size){
+int element=arr[0];
+int count=1;
+for(int i=1;i<size;i++)
+{
+if(arr[i]==element)
+{
+count++;
+}
+else
+{
+count--;
+}
+if(count==0)
+{
+element=arr[i];
+count=1;
+}
+}
+count=0;
+for(int j=0;j<size;j++)
+{
+if(arr[j]==element)
+{
+count++;
+}
+}
+if(count>size/2)
+{
+return element;
+}
+else
+{
+return -1;
+}
+}
+int main()
+{
+int arr[]={3,3,4,2,4,4,2,4,4};
+int size=sizeof(arr)/sizeof(arr[0]);
+int ans=majority(arr,size);
+if(ans!=-1)
+{
+printf("The Majority Element is: %d \n",ans);
+}
+else
+{
+printf("No Majority Element is there\n");
+}
+return 0;
+}
